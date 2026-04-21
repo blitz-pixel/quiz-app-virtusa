@@ -8,7 +8,7 @@
 *.ctxt
 
 config.properties
-chats.json
+chat.json
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

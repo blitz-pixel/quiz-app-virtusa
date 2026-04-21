@@ -1,0 +1,21 @@
+[ {
+  "questionText" : "What is the size of int in python?",
+  "options" : [ "8 bytes", "4 bytes", "32 bytes", "16 bytes" ],
+  "answerIndex" : 1,
+  "questionNumber" : 1
+}, {
+  "questionText" : "Which of the following is not a valid variable name in Python?",
+  "options" : [ "my_variable", "2nd_variable", "_variable", "variable2" ],
+  "answerIndex" : 1,
+  "questionNumber" : 2
+}, {
+  "questionText" : "What is the capital of France?",
+  "options" : [ "London", "Berlin", "Paris", "Madrid" ],
+  "answerIndex" : 2,
+  "questionNumber" : 3
+}, {
+  "questionText" : "What is the capital of France?",
+  "options" : [ "London", "Berlin", "Paris", "Madrid" ],
+  "answerIndex" : 2,
+  "questionNumber" : 4
+} ]

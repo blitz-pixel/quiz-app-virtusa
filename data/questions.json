@@ -1,0 +1,26 @@
+[ {
+  "questionText" : "What is JVM?",
+  "options" : [ "Java Virtual Machine", "Java Visual Model", "Java Variable Method", "Just Virtual Module" ],
+  "answerIndex" : 0,
+  "questionNumber" : 2
+}, {
+  "questionText" : "Which collection does not allow duplicates?",
+  "options" : [ "List", "Set", "Queue", "Map" ],
+  "answerIndex" : 1,
+  "questionNumber" : 3
+}, {
+  "questionText" : "What does OOP stand for?",
+  "options" : [ "Object-Oriented Programming", "Open Object Process", "Optional Oriented Program", "Object Operation Principle" ],
+  "answerIndex" : 0,
+  "questionNumber" : 4
+}, {
+  "questionText" : "What is the full form of RAM?",
+  "options" : [ "Random Access Memory", "Read Access Memory", "Readily Available Memory", "Random Available Memory" ],
+  "answerIndex" : 0,
+  "questionNumber" : 1
+}, {
+  "questionText" : "Find the odd one out",
+  "options" : [ "Vercel", "GitHub", "Hostinger", "Google" ],
+  "answerIndex" : 3,
+  "questionNumber" : 1
+} ]

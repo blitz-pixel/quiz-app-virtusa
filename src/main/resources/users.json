@@ -1,0 +1,56 @@
+[ {
+  "name" : "dfgdf",
+  "rollno" : 2312,
+  "questions" : {
+    "0" : false,
+    "1" : true,
+    "2" : false
+  },
+  "score" : 1,
+  "percentage" : 33.333333333333336
+}, {
+  "name" : "sdfsd",
+  "rollno" : 21321,
+  "questions" : {
+    "1" : false,
+    "2" : false,
+    "3" : false
+  },
+  "score" : 0,
+  "percentage" : 0.0
+}, {
+  "name" : "test2",
+  "rollno" : 5678,
+  "questions" : {
+    "1" : true,
+    "2" : true,
+    "3" : true,
+    "4" : true
+  },
+  "score" : 4,
+  "percentage" : 100.0
+}, {
+  "name" : "Charan",
+  "rollno" : 223423423,
+  "questions" : {
+    "1" : true,
+    "2" : true,
+    "3" : true,
+    "4" : false,
+    "5" : true
+  },
+  "score" : 4,
+  "percentage" : 80.0
+}, {
+  "name" : "charan",
+  "rollno" : 2342,
+  "questions" : {
+    "1" : false,
+    "2" : true,
+    "3" : true,
+    "4" : true,
+    "5" : true
+  },
+  "score" : 4,
+  "percentage" : 80.0
+} ]

@@ -1,3 +1,0 @@
-What is JVM?|Java Virtual Machine|Java Visual Model|Java Variable Method|Just Virtual Module|0
-Which collection does not allow duplicates?|List|Set|Queue|Map|1
-What does OOP stand for?|Object-Oriented Programming|Open Object Process|Optional Oriented Program|Object Operation Principle|0

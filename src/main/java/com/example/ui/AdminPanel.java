@@ -1,6 +1,7 @@
 package com.example.ui;
 
 import com.example.service.QuestionService;
+import com.sun.tools.javac.Main;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -16,9 +17,15 @@ import javax.swing.SwingConstants;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class AdminPanel extends JPanel {
     private final QuestionService questionService;
+
+    private String usernameMatch;
+    private String passwordMatch;
 
     private final JTabbedPane tabs;
     private final JTextField username = new JTextField();
@@ -61,11 +68,26 @@ public class AdminPanel extends JPanel {
     }
 
     private void addQuestion() {
-        String adminUser = username.getText().trim();
-        String adminPass = password.getText().trim();
+        String adminUsername = username.getText().trim();
+        String adminPassword = password.getText().trim();
+
+        Properties prop = new Properties();
+        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input == null) {
+                JOptionPane.showMessageDialog(this, "Some error happened", "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println("Sorry, unable to find config.properties");
+                return;
+            }
+            prop.load(input);
+            usernameMatch = prop.getProperty("username");
+            passwordMatch = prop.getProperty("password");
+        } catch (IOException ex) {
+            System.out.println("Error reading config file: " + ex.getMessage());
+            return;
+        }
 
 
-        if (adminUser.equals("admin") && adminPass.equals("password")) {
+        if (adminUsername.equals(usernameMatch) && adminPassword.equals(passwordMatch)) {
             username.setText("");
             password.setText("");
 
@@ -135,7 +157,6 @@ public class AdminPanel extends JPanel {
         }
 
         int correctIndex = correctOptionBox.getSelectedIndex();
-        
         questionService.addQuestion(questionText, option1, option2, option3, option4, correctIndex);
 
         clearFields();

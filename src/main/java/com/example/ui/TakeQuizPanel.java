@@ -1,8 +1,6 @@
 package com.example.ui;
 
 import com.example.model.Question;
-import com.example.repository.QuestionRepository;
-import com.example.repository.UserRepository;
 import com.example.service.QuizService;
 import com.example.service.UserService;
 import  com.example.model.QuizResult;
@@ -19,18 +17,14 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-import javax.swing.border.Border;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JTextField;
-import java.awt.Color;
 import java.awt.Font;
-import javax.swing.BorderFactory;
 import com.example.service.QuestionService;
 
 public class TakeQuizPanel extends JPanel {
@@ -76,13 +70,6 @@ public class TakeQuizPanel extends JPanel {
         this.userService = userService;
         this.tabs = tabs;
 
-        JPanel userInfoPanel = new JPanel();
-        nameField.setColumns(15);
-        rollnoField.setColumns(10);
-        userInfoPanel.add(new JLabel("Name:"));
-        userInfoPanel.add(nameField);
-        userInfoPanel.add(new JLabel("Roll No:"));
-        userInfoPanel.add(rollnoField);
 
         // questionLabel.setOpaque(true);                 
         // questionLabel.setBackground(Color.YELLOW);
@@ -107,6 +94,20 @@ public class TakeQuizPanel extends JPanel {
         //     BorderFactory.createLineBorder(Color.BLUE, 2),      // visible outer border
         //     BorderFactory.createEmptyBorder(20, 20, 20, 20)    // your existing padding
         // ));
+
+        initQuizUi();  
+
+        
+    }
+
+    private void  initQuizUi(){
+        JPanel userInfoPanel = new JPanel();
+        nameField.setColumns(15);
+        rollnoField.setColumns(10);
+        userInfoPanel.add(new JLabel("Name:"));
+        userInfoPanel.add(nameField);
+        userInfoPanel.add(new JLabel("Roll No:"));
+        userInfoPanel.add(rollnoField);
 
         timerLabel.setPreferredSize(new Dimension(100, 40));
         questionCountLabel.setPreferredSize(new Dimension(200, 40));
@@ -137,9 +138,7 @@ public class TakeQuizPanel extends JPanel {
         center.add(option3);
         center.add(option4);
         add(center,BorderLayout.CENTER);
-        // center.setOpaque(true);
-        // center.setBackground(Color.YELLOW);
-        // center.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
+       
 
        
 
@@ -149,9 +148,7 @@ public class TakeQuizPanel extends JPanel {
         bottom.add(nextButton);
         bottom.add(submitButton);
         add(bottom, BorderLayout.SOUTH);
-        // bottom.setOpaque(true);
-        // bottom.setBackground(Color.CYAN);
-        // bottom.setBorder(BorderFactory.createLineBorder(Color.MAGENTA, 2));   
+
 
         
         previousButton.setEnabled(false);
@@ -159,7 +156,14 @@ public class TakeQuizPanel extends JPanel {
         submitButton.setEnabled(false);
         setOptionVisible(false);
 
-        startButton.addActionListener(e -> {
+        buttonEventListeners();
+
+
+        
+    }
+
+    private void buttonEventListeners() {
+       startButton.addActionListener(e -> {
             name = nameField.getText().trim();
             String rollnoText = rollnoField.getText().trim();
            

@@ -72,33 +72,9 @@ public class TakeQuizPanel extends JPanel {
         this.userService = userService;
         this.tabs = tabs;
 
-
-        // questionLabel.setOpaque(true);                 
-        // questionLabel.setBackground(Color.YELLOW);
-        // questionLabel.setBorder(BorderFactory.createLineBorder(java.awt.Color.RED, 2));
-
-        // timerLabel.setOpaque(true);
-        // timerLabel.setBackground(Color.red);
-        // timerLabel.setBorder(BorderFactory.createLineBorder(java.awt.Color.BLUE, 2));
-
-        // questionCountLabel.setOpaque(true);
-        // questionCountLabel.setBackground(Color.blue);
-        // questionCountLabel.setBorder(BorderFactory.createLineBorder(java.awt.Color.GREEN, 2));
-        
-        // System.out.println("TakeQuizPanel initialized with name: " + nameField.getText() + " and rollno: " + rollnoField.getText());
         setLayout(new BorderLayout(10,10));
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-        // setOpaque(true);
-        // setBackground(Color.RED);
-
-        // // Wrap existing empty border with a visible line border
-        // setBorder(BorderFactory.createCompoundBorder(
-        //     BorderFactory.createLineBorder(Color.BLUE, 2),      // visible outer border
-        //     BorderFactory.createEmptyBorder(20, 20, 20, 20)    // your existing padding
-        // ));
-
         initQuizUi();  
-
         
     }
 
@@ -126,10 +102,7 @@ public class TakeQuizPanel extends JPanel {
         optionsGroup.add(option2);
         optionsGroup.add(option3);
         optionsGroup.add(option4);
-        // top.setOpaque(true);
-        // top.setBackground(Color.red);
-        // top.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
-
+    
         JPanel center = new JPanel();
         
         center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
@@ -141,17 +114,12 @@ public class TakeQuizPanel extends JPanel {
         center.add(option4);
         add(center,BorderLayout.CENTER);
        
-
-       
-
         JPanel bottom = new JPanel();
         bottom.add(startButton);
         bottom.add(previousButton);
         bottom.add(nextButton);
         bottom.add(submitButton);
         add(bottom, BorderLayout.SOUTH);
-
-
         
         previousButton.setEnabled(false);
         nextButton.setEnabled(false);
@@ -160,8 +128,6 @@ public class TakeQuizPanel extends JPanel {
 
         buttonEventListeners();
 
-
-        
     }
 
     private void buttonEventListeners() {

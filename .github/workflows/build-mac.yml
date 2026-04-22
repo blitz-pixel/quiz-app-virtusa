@@ -28,7 +28,7 @@ jobs:
             --input input \
             --dest output \
             --name "JavaQuizApp" \
-            --main-jar QuizApp-jar-with-dependencies.jar \
+            --main-jar QuizAppBuild-1-jar-with-dependencies.jar \
             --main-class com.example.Main \
             --type dmg
 

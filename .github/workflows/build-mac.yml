@@ -20,7 +20,7 @@ jobs:
       - name: Create Input Folder
         run: |
           mkdir input
-          cp target/QuizApp-jar-with-dependencies.jar input/
+          cp target/QuizAppBuild-1-jar-with-dependencies.jar input/
 
       - name: Run jpackage
         run: |

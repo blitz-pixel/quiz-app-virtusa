@@ -187,14 +187,14 @@ public class AdminPanel extends JPanel {
         try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
             if (input == null) {
                 JOptionPane.showMessageDialog(this, "Some error happened", "Error", JOptionPane.ERROR_MESSAGE);
-                System.out.println("Sorry, unable to find config.properties");
+                // System.out.println("Sorry, unable to find config.properties");
                 return;
             }
             prop.load(input);
             usernameMatch = prop.getProperty("username");
             passwordMatch = prop.getProperty("password");
         } catch (IOException ex) {
-            System.out.println("Error reading config file: " + ex.getMessage());
+            // System.out.println("Error reading config file: " + ex.getMessage());
             return;
         }
 

@@ -24,7 +24,7 @@ public class UserService {
     public boolean checkIfUserPresent(Long rollno){
         List<Users> users = loadFileRepository.loadAll();
         for (Users user : users){
-            System.out.println("Checking user with rollno: " + user.getRollno() + " against input rollno: " + rollno);
+            // System.out.println("Checking user with rollno: " + user.getRollno() + " against input rollno: " + rollno);
             if (user.getRollno().equals(rollno)){
                 return true;
             }
@@ -37,7 +37,7 @@ public class UserService {
     }
 
     public void addUser(String name,Long rollno, List<Integer> selectedAnswers, List<Question> questions) {
-       System.out.println("Adding user: " + name + ", Roll No: " + rollno);
+    //    System.out.println("Adding user: " + name + ", Roll No: " + rollno);
        Map<Integer, Boolean> questionsAttempted = new HashMap<Integer,Boolean>();
        for (int i = 0; i < questions.size(); i++){
         Integer selected = selectedAnswers.get(i);
@@ -46,7 +46,7 @@ public class UserService {
        }
        double percentage = quizService.evaluate(questions, selectedAnswers).getPercentage();
        int score = quizService.evaluate(questions, selectedAnswers).getCorrectAnswers();
-       System.out.println("User " + name + " scored " + score + " with percentage: " + percentage);
+    //    System.out.println("User " + name + " scored " + score + " with percentage: " + percentage);
        Users user = new Users(name, rollno, questionsAttempted, score, percentage);
        loadFileRepository.add(user);;
   

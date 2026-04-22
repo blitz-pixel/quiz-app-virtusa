@@ -1,0 +1,15 @@
+com\example\ui\TakeQuizPanel.class
+com\example\Main.class
+com\example\ui\MainFrame.class
+com\example\service\QuizService.class
+com\example\model\QuizResult.class
+com\example\repository\QuestionRepository$1.class
+com\example\repository\UserRepository.class
+com\example\ui\AdminPanel.class
+com\example\repository\LoadFileRepository.class
+com\example\model\Question.class
+com\example\service\QuestionService.class
+com\example\repository\QuestionRepository.class
+com\example\service\UserService.class
+com\example\repository\UserRepository$1.class
+com\example\model\Users.class

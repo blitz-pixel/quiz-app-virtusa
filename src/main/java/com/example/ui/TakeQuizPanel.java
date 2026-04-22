@@ -39,6 +39,8 @@ public class TakeQuizPanel extends JPanel {
     private final JLabel timerLabel = new JLabel("", SwingConstants.CENTER);
     private final JLabel questionCountLabel = new JLabel("", SwingConstants.CENTER);
     private final JLabel questionLabel = new JLabel("", SwingConstants.CENTER);
+    private final JLabel nameLabel = new JLabel("Name: ", SwingConstants.CENTER);
+    private final JLabel rollnoLabel = new JLabel("Roll No: ", SwingConstants.CENTER);
 
     private final JRadioButton option1 = new JRadioButton();
     private final JRadioButton option2 = new JRadioButton();
@@ -104,9 +106,9 @@ public class TakeQuizPanel extends JPanel {
         JPanel userInfoPanel = new JPanel();
         nameField.setColumns(15);
         rollnoField.setColumns(10);
-        userInfoPanel.add(new JLabel("Name:"));
+        userInfoPanel.add(nameLabel);
         userInfoPanel.add(nameField);
-        userInfoPanel.add(new JLabel("Roll No:"));
+        userInfoPanel.add(rollnoLabel);
         userInfoPanel.add(rollnoField);
 
         timerLabel.setPreferredSize(new Dimension(100, 40));
@@ -210,13 +212,29 @@ public class TakeQuizPanel extends JPanel {
     }
 
     private void startQuiz() {
-        
         questions = questionService.getAllQuestions();
-        setOptionVisible(true);
+        List<Question> validQuestions = new ArrayList<>();
+        for (Question question : questions) {
+            if (question != null
+                && question.getQuestionText() != null
+                && !question.getQuestionText().isBlank()
+                && question.getOptions() != null
+                && question.getOptions().size() >= 4) {
+                validQuestions.add(question);
+            } 
+        }
+        questions = validQuestions;
+
         if (questions.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No questions available. Add questions from Admin tab first.", "No Questions", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No valid questions available. Add questions with 4 options from Admin tab first.", "No Questions", JOptionPane.WARNING_MESSAGE);
             return;
         }
+
+        nameField.setVisible(false);
+        rollnoField.setVisible(false);
+        nameLabel.setText("");
+        rollnoLabel.setText("");
+        setOptionVisible(true);
 
         tabs.setEnabled(false);
         Collections.shuffle(questions);
@@ -250,16 +268,17 @@ public class TakeQuizPanel extends JPanel {
 
     private void renderCurrentQuestion() {
         Question q = questions.get(currentQuestionIndex);
+        List<String> options = q.getOptions();
 
         questionCountLabel.setText("Question" + (currentQuestionIndex + 1) + "/" + questions.size());
         questionLabel.setText( q.getQuestionText() );
         questionLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
 
-        option1.setText("1) " + q.getOptions().get(0));
-        option2.setText("2) " + q.getOptions().get(1));
-        option3.setText("3) " + q.getOptions().get(2));
-        option4.setText("4) " + q.getOptions().get(3));
+        option1.setText("1) " + options.get(0));
+        option2.setText("2) " + options.get(1));
+        option3.setText("3) " + options.get(2));
+        option4.setText("4) " + options.get(3));
 
         optionsGroup.clearSelection();
         Integer selected = selectedAnswers.get(currentQuestionIndex);
@@ -343,6 +362,8 @@ public class TakeQuizPanel extends JPanel {
         currentQuestionIndex = 0;
 
 
+        nameField.setText("Name: ");
+        rollnoLabel.setText("Roll No: ");
         rollnoField.setText("");
         nameField.setText("");
         questionLabel.setText("");
@@ -355,6 +376,7 @@ public class TakeQuizPanel extends JPanel {
         option4.setText("");
 
         startButton.setEnabled(true);
+        previousButton.setEnabled(false);
         nextButton.setEnabled(false);
         submitButton.setEnabled(false);
         setOptionVisible(false);

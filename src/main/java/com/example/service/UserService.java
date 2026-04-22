@@ -32,6 +32,10 @@ public class UserService {
         return false;
     }
 
+    public List<Users> getAllUsers(){
+        return loadFileRepository.loadAll();
+    }
+
     public void addUser(String name,Long rollno, List<Integer> selectedAnswers, List<Question> questions) {
        System.out.println("Adding user: " + name + ", Roll No: " + rollno);
        Map<Integer, Boolean> questionsAttempted = new HashMap<Integer,Boolean>();

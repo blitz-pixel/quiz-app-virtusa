@@ -1,21 +1,101 @@
 [ {
-  "questionText" : "What is the size of int in python?",
-  "options" : [ "8 bytes", "4 bytes", "32 bytes", "16 bytes" ],
-  "answerIndex" : 1,
+  "questionText" : "Which of these is a valid declaration of a boolean variable in Java?",
+  "options" : [ "boolean b = 1;", "bool b = true;", "boolean b = true;", "boolean b = 'true';" ],
+  "answerIndex" : 2,
   "questionNumber" : 1
 }, {
-  "questionText" : "Which of the following is not a valid variable name in Python?",
-  "options" : [ "my_variable", "2nd_variable", "_variable", "variable2" ],
+  "questionText" : "What is the default value of an instance variable of type 'int' in Java?",
+  "options" : [ "null", "0", "undefined", "Garbage value" ],
   "answerIndex" : 1,
   "questionNumber" : 2
 }, {
-  "questionText" : "What is the capital of France?",
-  "options" : [ "London", "Berlin", "Paris", "Madrid" ],
+  "questionText" : "Which keyword is used to prevent a class from being inherited in Java?",
+  "options" : [ "static", "abstract", "final", "private" ],
   "answerIndex" : 2,
   "questionNumber" : 3
 }, {
-  "questionText" : "What is the capital of France?",
-  "options" : [ "London", "Berlin", "Paris", "Madrid" ],
-  "answerIndex" : 2,
+  "questionText" : "Which of these is NOT a primitive data type in Java?",
+  "options" : [ "int", "String", "char", "double" ],
+  "answerIndex" : 1,
   "questionNumber" : 4
+}, {
+  "questionText" : "What is the purpose of the 'break' statement in a loop?",
+  "options" : [ "Skip current iteration", "Exit the loop immediately", "Restart the loop", "Pause execution" ],
+  "answerIndex" : 1,
+  "questionNumber" : 5
+}, {
+  "questionText" : "Which package is automatically imported into every Java program?",
+  "options" : [ "java.util", "java.io", "java.lang", "java.net" ],
+  "answerIndex" : 2,
+  "questionNumber" : 6
+}, {
+  "questionText" : "How do you access the number of elements in a standard array named 'data'?",
+  "options" : [ "data.length()", "data.size()", "data.length", "data.getSize()" ],
+  "answerIndex" : 2,
+  "questionNumber" : 7
+}, {
+  "questionText" : "Which keyword is used to establish inheritance between two classes?",
+  "options" : [ "implements", "extends", "inherits", "using" ],
+  "answerIndex" : 1,
+  "questionNumber" : 8
+}, {
+  "questionText" : "What exception is thrown when dividing an integer by zero?",
+  "options" : [ "NullPointerException", "ArithmeticException", "NumberFormatException", "IOException" ],
+  "answerIndex" : 1,
+  "questionNumber" : 9
+}, {
+  "questionText" : "Which method is used to compare the actual character content of two Strings?",
+  "options" : [ "==", "equals()", "compare()", "isEqual()" ],
+  "answerIndex" : 1,
+  "questionNumber" : 10
+}, {
+  "questionText" : "Which block is used to handle exceptions that might occur in a 'try' block?",
+  "options" : [ "catch", "finally", "handle", "throw" ],
+  "answerIndex" : 0,
+  "questionNumber" : 11
+}, {
+  "questionText" : "What does the 'static' keyword indicate about a method?",
+  "options" : [ "It is constant", "It belongs to the class", "It is private", "It runs in a thread" ],
+  "answerIndex" : 1,
+  "questionNumber" : 12
+}, {
+  "questionText" : "Which of these is a valid single-line comment in Java?",
+  "options" : [ "# comment", "// comment", "/* comment", "-- comment" ],
+  "answerIndex" : 1,
+  "questionNumber" : 13
+}, {
+  "questionText" : "What is the result of the expression 9 % 2 in Java?",
+  "options" : [ "4", "4.5", "1", "0" ],
+  "answerIndex" : 2,
+  "questionNumber" : 14
+}, {
+  "questionText" : "Which keyword refers to the immediate parent class object?",
+  "options" : [ "this", "super", "parent", "base" ],
+  "answerIndex" : 1,
+  "questionNumber" : 15
+}, {
+  "questionText" : "Which collection should be used if you want to prevent duplicate elements?",
+  "options" : [ "ArrayList", "LinkedList", "Set", "Vector" ],
+  "answerIndex" : 2,
+  "questionNumber" : 16
+}, {
+  "questionText" : "What is the size of a 'char' data type in Java?",
+  "options" : [ "4 bits", "2 bits", "16 bits", "32 bits" ],
+  "answerIndex" : 1,
+  "questionNumber" : 17
+}, {
+  "questionText" : "Which method is used to start the execution of a Thread?",
+  "options" : [ "run()", "start()", "init()", "execute()" ],
+  "answerIndex" : 1,
+  "questionNumber" : 18
+}, {
+  "questionText" : "Which of these is used to define a constant in Java?",
+  "options" : [ "constant", "fixed", "final", "static" ],
+  "answerIndex" : 2,
+  "questionNumber" : 19
+}, {
+  "questionText" : "Which method is the main entry point for a Java application?",
+  "options" : [ "public static void main(String[] args)", "void main()", "public void start()", "static main(args)" ],
+  "answerIndex" : 0,
+  "questionNumber" : 20
 } ]

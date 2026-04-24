@@ -3,7 +3,7 @@
 A desktop Java Swing quiz application with two primary workflows:
 
 - **Student flow** to take a timed multiple-choice quiz and view result analysis.
-- **Admin flow** to add questions and review student quiz outcomes.
+- **Admin flow** to add questions, view questions and review student quiz outcomes
 
 The app uses JSON files for persistence and Maven for dependency/build management.
 
@@ -57,6 +57,12 @@ quiz-app-virtusa/
 - **Maven 3.9+**
 
 ## Setup
+### Option 1: Run from Installer
+1. Open the output-exe folder
+2. Download the .rar file and extract it
+3. Navigate to the extracted folder and run the .exe file
+
+### Option 2 : Run manually
 
 1. Clone the repository.
 2. Ensure JDK 25 is active:
@@ -74,7 +80,7 @@ quiz-app-virtusa/
 
 > `config.properties` is git-ignored by design.
 
-## Build
+#### Build
 
 ```bash
 mvn clean package
@@ -84,7 +90,7 @@ Expected output artifact:
 
 `target/QuizAppBuild-1-jar-with-dependencies.jar`
 
-## Run
+## Run (If cloned the repository else skip)
 
 ### Option 1: Run from IDE
 

@@ -17,7 +17,11 @@ public class UserService {
     
 
     public UserService(String filePath) {
+        try{
         this.loadFileRepository = new LoadFileRepository<Users>(filePath, Users.class);
+        } catch (RuntimeException re){
+            throw new RuntimeException(re.getMessage());
+        }
         this.quizService = new QuizService();
     }
 

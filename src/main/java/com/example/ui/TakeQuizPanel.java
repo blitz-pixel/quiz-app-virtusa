@@ -331,7 +331,9 @@ public class TakeQuizPanel extends JPanel {
         nameField.setText("Name: ");
         rollnoLabel.setText("Roll No: ");
         rollnoField.setText("");
+        rollnoField.setVisible(true);
         nameField.setText("");
+        nameField.setVisible(true);
         questionLabel.setText("");
         questionCountLabel.setText("");
         timerLabel.setText("");

@@ -13,7 +13,11 @@ public class QuestionService{
 
 
     public QuestionService(String filePath) {
-        this.loadFileRepository = new LoadFileRepository<Question>(filePath, Question.class);
+        try {
+            this.loadFileRepository = new LoadFileRepository<Question>(filePath, Question.class);
+        } catch (RuntimeException re){
+            throw new RuntimeException(re.getMessage());
+        }
     }
 
     public List<Question> getAllQuestions() {

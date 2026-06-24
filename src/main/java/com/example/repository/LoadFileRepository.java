@@ -16,20 +16,50 @@ public class LoadFileRepository<T> {
     private final Path filePath;
     private final Class<T> itemType;
 
-    public LoadFileRepository(String fullPath, Class<T> itemType){
-        this.filePath = Paths.get(fullPath);
+    public LoadFileRepository(String fileName, Class<T> itemType){
         this.itemType = itemType;
+      
+        Path fileDir = Paths.get(System.getProperty("user.home"), ".quizapp");
+         this.filePath = fileDir.resolve(fileName);
+
+        initializeFile(fileName);
     }
 
+    private void initializeFile(String fileName){
+        try {
+            Files.createDirectories(filePath.getParent());
+            if (Files.notExists(filePath)) {
+
+            try (var in = getClass()
+                    .getClassLoader()
+                    .getResourceAsStream(fileName)) {
+
+                if (in == null) {
+                    throw new RuntimeException(
+                            "Default file not found: "
+                                    + fileName);
+                }
+
+                Files.copy(in, filePath);
+            } 
+        }
+
+    } catch (IOException e) {
+        throw new RuntimeException(
+                "Failed to initialize data file",
+                e);
+    }
+    }
    
     @SuppressWarnings("unchecked")
-    public LoadFileRepository(String fullPath) {
-        this(fullPath, (Class <T>) Object.class );
+    public LoadFileRepository(String fileName) {
+        this(fileName, (Class <T>) Object.class );
     }
 
     public List<T> loadAll() {
         try {
             Path parent = filePath.getParent();
+            // System.out.println("Loading data from: " + filePath.toAbsolutePath());
             if (parent != null && Files.notExists(parent)) {
                 throw new RuntimeException("Data folder not found: " + parent);
             } else if (Files.notExists(filePath)) {

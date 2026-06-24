@@ -7,6 +7,7 @@ import com.example.service.UserService;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
+import javax.swing.JOptionPane;
 
 
 import java.awt.BorderLayout;
@@ -16,8 +17,23 @@ public class MainFrame extends JFrame {
     private final UserService userService;
 
     public MainFrame() {
-        this.questionService = new QuestionService("C:\\Charan\\Virtusa\\TestCases\\Java\\quizapp\\src\\main\\resources\\questions.json");
-        this.userService = new UserService("C:\\Charan\\Virtusa\\TestCases\\Java\\quizapp\\src\\main\\resources\\users.json");
+        // this.questionService = new QuestionService("C:\\Charan\\Virtusa\\TestCases\\Java\\quizapp\\src\\main\\resources\\questions.json");
+        try {
+        this.questionService = new QuestionService("questions.json");
+        
+        } catch (RuntimeException re){
+            JOptionPane.showMessageDialog(this, re.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+            throw re;
+        }
+
+        try{
+        this.userService = new UserService("users.json");
+        } catch (RuntimeException re){
+            JOptionPane.showMessageDialog(this, re.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+            throw re;
+        }
 
         setTitle("Welcome to Quiz App");
         setSize(900, 600);

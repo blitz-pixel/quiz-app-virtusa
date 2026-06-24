@@ -73,12 +73,40 @@ public class AdminPanel extends JPanel {
 
         add(loginButton, BorderLayout.CENTER);
         loginButton.addActionListener(e -> {
+            boolean isValidAdmin = validateAdminCredentials();
+            if (!isValidAdmin) {
+                JOptionPane.showMessageDialog(this, "Invalid credentials. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             initAdminUi();
         });
         
         revalidate();
         repaint();
         
+    }
+     private boolean validateAdminCredentials(){
+        String adminUsername = username.getText().trim();
+        String adminPassword = password.getText().trim();
+
+        
+        Properties prop = new Properties();
+        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input == null) {
+                JOptionPane.showMessageDialog(this, "Some error happened", "Error", JOptionPane.ERROR_MESSAGE);
+                // System.out.println("Sorry, unable to find config.properties");
+                return false;
+            }
+            prop.load(input);
+            usernameMatch = prop.getProperty("username");
+            passwordMatch = prop.getProperty("password");
+        } catch (IOException ex) {
+            // System.out.println("Error reading config file: " + ex.getMessage());
+            return false;
+        }
+
+        boolean valid = adminUsername.equals(usernameMatch) && adminPassword.equals(passwordMatch);
+        return valid;
     }
 
     private void initAdminUi() {
@@ -104,8 +132,12 @@ public class AdminPanel extends JPanel {
         repaint();
     }
 
+
+   
     private void viewAllStudents(){
         removeAll();
+         username.setText("");
+            password.setText("");
         List<Users> users = userService.getAllUsers();
         int questionSize = questionService.getAllQuestions().size();
 
@@ -149,7 +181,10 @@ public class AdminPanel extends JPanel {
     }
 
     private void ShowQuestions() {
+        
         removeAll();
+        username.setText("");
+        password.setText("");
         List<Question> questions = questionService.getAllQuestions();
 
         String[] columns = {"S.no", "Question", "Option 1", "Option 2", "Option 3", "Option 4", "Correct Option"};
@@ -180,26 +215,6 @@ public class AdminPanel extends JPanel {
     }
 
     private void addQuestion() {
-        String adminUsername = username.getText().trim();
-        String adminPassword = password.getText().trim();
-
-        Properties prop = new Properties();
-        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
-            if (input == null) {
-                JOptionPane.showMessageDialog(this, "Some error happened", "Error", JOptionPane.ERROR_MESSAGE);
-                // System.out.println("Sorry, unable to find config.properties");
-                return;
-            }
-            prop.load(input);
-            usernameMatch = prop.getProperty("username");
-            passwordMatch = prop.getProperty("password");
-        } catch (IOException ex) {
-            // System.out.println("Error reading config file: " + ex.getMessage());
-            return;
-        }
-
-
-        if (adminUsername.equals(usernameMatch) && adminPassword.equals(passwordMatch)) {
             username.setText("");
             password.setText("");
 
@@ -239,9 +254,6 @@ public class AdminPanel extends JPanel {
             buttonPanel.add(cancelButton);
             add(buttonPanel);
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid credentials. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
-        }
     }
     private JPanel field(String label, JTextField textField) {
         JPanel panel = new JPanel();
